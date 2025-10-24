@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "/home/quwy/alq/backend-aspnet/wwwroot/assets/index-C8jvLSyK.js",
+      "PackagePath": "staticwebassets/assets/index-C8jvLSyK.js"
+    },
+    {
+      "Id": "/home/quwy/alq/backend-aspnet/wwwroot/assets/index-fEn8VGTC.css",
+      "PackagePath": "staticwebassets/assets/index-fEn8VGTC.css"
+    },
+    {
+      "Id": "/home/quwy/alq/backend-aspnet/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.backend-aspnet.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.backend-aspnet.props",
+      "PackagePath": "build\\backend-aspnet.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.backend-aspnet.props",
+      "PackagePath": "buildMultiTargeting\\backend-aspnet.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.backend-aspnet.props",
+      "PackagePath": "buildTransitive\\backend-aspnet.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

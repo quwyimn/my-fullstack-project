@@ -1,0 +1,41 @@
+/* src/pages/StagePage.module.css */
+.container { max-width: 896px; margin: 0 auto; padding: 2rem; }
+.backButton { margin-bottom: 1.5rem; color: #2dd4bf; background: none; border: none; cursor: pointer; transition: color 0.3s; }
+.backButton:hover { color: #5eead4; }
+.backButton i { margin-right: 0.5rem; }
+.quizBox { background-color: #1f2937; padding: 2rem; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.header h1 { font-size: 1.875rem; font-weight: bold; color: #2dd4bf; margin: 0; }
+.progress { font-size: 1.125rem; font-weight: 600; background-color: #111827; padding: 0.5rem 1rem; border-radius: 0.5rem; }
+.progress span { color: #2dd4bf; }
+.questionContainer { background-color: #111827; padding: 1.5rem; border-radius: 0.5rem; }
+.questionContainer h2 { font-size: 1.5rem; line-height: 1.6; margin: 0; }
+.optionsGrid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0; }
+@media (min-width: 768px) { .optionsGrid { grid-template-columns: 1fr 1fr; } }
+.optionButton { padding: 1rem; border-radius: 0.5rem; border: 2px solid #4b5563; background-color: #374151; text-align: left; color: white; font-size: 1.125rem; transition: all 0.3s; cursor: pointer; }
+.optionButton:not(:disabled):hover { border-color: #2dd4bf; background-color: #4b5563; }
+.optionButton:disabled { cursor: default; }
+.selected { border-color: #2dd4bf; background-color: #14b8a6; box-shadow: 0 0 0 2px #2dd4bf; }
+.correct { background-color: #15803d; border-color: #22c55e; }
+.incorrect { background-color: #b91c1c; border-color: #ef4444; }
+.disabled { opacity: 0.6; }
+.explanationBox { padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; }
+.explanationBox h3 { font-weight: bold; font-size: 1.125rem; margin-bottom: 0.5rem; }
+.explanationCorrect { background-color: rgba(22, 163, 74, 0.5); }
+.explanationIncorrect { background-color: rgba(185, 28, 28, 0.5); }
+.footer { margin-top: 2rem; text-align: right; }
+.actionButton { color: white; font-weight: bold; padding: 0.75rem 2rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: all 0.3s; }
+.checkButton { background-color: #0d9488; }
+.checkButton:hover:not(:disabled) { background-color: #0f766e; }
+.checkButton:disabled { background-color: #4b5563; cursor: not-allowed; }
+.nextButton { background-color: #4f46e5; animation: pulse 2s infinite; }
+.nextButton:hover { transform: scale(1.05); }
+@keyframes pulse { 50% { opacity: .8; } }
+.completionBox { text-align: center; background-color: #1f2937; padding: 3rem; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+.completionBox i { font-size: 4.5rem; margin-bottom: 1.5rem; animation: bounce 1s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); } 50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); } }
+.completionBox h1 { font-size: 2.25rem; color: #2dd4bf; }
+.completionBox p { margin-top: 1rem; font-size: 1.25rem; color: #d1d5db; }
+.completionBox .xp { color: #facc15; font-size: 1.125rem; }
+.completionBox button { margin-top: 2rem; background-color: #0d9488; color: white; font-weight: bold; padding: 0.75rem 1.5rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: transform 0.3s; }
+.completionBox button:hover { transform: scale(1.05); }

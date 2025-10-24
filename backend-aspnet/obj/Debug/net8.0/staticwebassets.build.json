@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "W9RqGpyelvf/UjqQ75Z5pE0lq0bdAuBgBdGm6lVSSrY=",
+  "Source": "backend-aspnet",
+  "BasePath": "_content/backend-aspnet",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "backend-aspnet/wwwroot",
+      "Source": "backend-aspnet",
+      "ContentRoot": "/home/quwy/alq/backend-aspnet/wwwroot/",
+      "BasePath": "_content/backend-aspnet",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/quwy/alq/backend-aspnet/wwwroot/assets/index-C8jvLSyK.js",
+      "SourceId": "backend-aspnet",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/quwy/alq/backend-aspnet/wwwroot/",
+      "BasePath": "_content/backend-aspnet",
+      "RelativePath": "assets/index-C8jvLSyK.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/index-C8jvLSyK.js"
+    },
+    {
+      "Identity": "/home/quwy/alq/backend-aspnet/wwwroot/assets/index-fEn8VGTC.css",
+      "SourceId": "backend-aspnet",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/quwy/alq/backend-aspnet/wwwroot/",
+      "BasePath": "_content/backend-aspnet",
+      "RelativePath": "assets/index-fEn8VGTC.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/index-fEn8VGTC.css"
+    },
+    {
+      "Identity": "/home/quwy/alq/backend-aspnet/wwwroot/index.html",
+      "SourceId": "backend-aspnet",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/quwy/alq/backend-aspnet/wwwroot/",
+      "BasePath": "_content/backend-aspnet",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    }
+  ]
+}
