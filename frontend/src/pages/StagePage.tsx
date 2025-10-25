@@ -126,8 +126,13 @@ const StagePage: React.FC<StagePageProps> = ({ stageId }) => {
             <div className={styles.quizBox}>
                 <div className={styles.header}>
                     <h1>{stage.name}</h1>
-                    <div className={styles.progress}>
-                        Câu hỏi <span>{currentQuizIndex + 1}</span> / {stage.quizzes.length}
+                    <div style={{ textAlign: 'right' }}>
+                        <div className={styles.progress}>
+                            Câu hỏi <span>{currentQuizIndex + 1}</span> / {stage.quizzes.length}
+                        </div>
+                        <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#9ca3af' }}>
+                            Mức độ: <span style={{ color: '#e5e7eb', fontWeight: '500' }}>{currentQuiz.bloomTag}</span>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.questionContainer}>
@@ -145,7 +150,12 @@ const StagePage: React.FC<StagePageProps> = ({ stageId }) => {
                             buttonClass += ` ${styles.selected}`;
                         }
                         return (
-                            <button key={index} onClick={() => handleSelectAnswer(index)} disabled={isAnswerChecked} className={buttonClass}>
+                            <button
+                                key={index}
+                                onClick={() => handleSelectAnswer(index)}
+                                disabled={isAnswerChecked}
+                                className={buttonClass}
+                            >
                                 {option}
                             </button>
                         );
@@ -159,11 +169,18 @@ const StagePage: React.FC<StagePageProps> = ({ stageId }) => {
                 )}
                 <div className={styles.footer}>
                     {!isAnswerChecked ? (
-                        <button onClick={handleCheckAnswer} disabled={selectedAnswer === null} className={`${styles.actionButton} ${styles.checkButton}`}>
+                        <button
+                            onClick={handleCheckAnswer}
+                            disabled={selectedAnswer === null}
+                            className={`${styles.actionButton} ${styles.checkButton}`}
+                        >
                             Kiểm tra
                         </button>
                     ) : (
-                        <button onClick={handleNextQuestion} className={`${styles.actionButton} ${styles.nextButton}`}>
+                        <button
+                            onClick={handleNextQuestion}
+                            className={`${styles.actionButton} ${styles.nextButton}`}
+                        >
                             {currentQuizIndex < stage.quizzes.length - 1 ? 'Câu tiếp theo' : 'Hoàn thành'}
                             <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
                         </button>

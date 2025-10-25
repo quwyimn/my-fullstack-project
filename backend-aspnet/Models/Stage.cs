@@ -23,7 +23,8 @@ public class Stage
     
     [BsonElement("order")]
     public int Order { get; set; }
+    public string? BadgeId { get; set; } 
 
-    [BsonIgnore] 
+    //[System.Text.Json.Serialization.JsonIgnore] 
     public List<Quiz> Quizzes { get; set; } = new List<Quiz>();
 }

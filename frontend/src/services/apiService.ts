@@ -1,5 +1,5 @@
 // src/services/apiService.ts
-import type { User, Stage, Quiz } from '../types';
+import type { User, Stage, Quiz, Badge } from '../types';
 
 // THAY ĐỔI ĐỊA CHỈ NÀY cho đúng với backend của bạn
 const BASE_URL = 'http://localhost:5135/api'; 
@@ -39,9 +39,7 @@ async function apiFetch(endpoint: string, options: RequestInit = {}) {
 
 // Đối tượng chứa tất cả các hàm gọi API cụ thể
 export const apiService = {
-    /**
-     * Gửi yêu cầu POST đến /Users/login
-     */
+    // --- User APIs ---
     login: async (email: string, password_param: string): Promise<User> => {
         return apiFetch('/Users/login', {
             method: 'POST',
@@ -49,9 +47,6 @@ export const apiService = {
         });
     },
 
-    /**
-     * Gửi yêu cầu POST đến /Users/register
-     */
     register: async (username: string, email: string, password_param: string): Promise<User> => {
         return apiFetch('/Users/register', {
             method: 'POST',
@@ -59,27 +54,24 @@ export const apiService = {
         });
     },
 
-    /**
-     * Gửi yêu cầu GET đến /Stages
-     */
+    getUsers: async (): Promise<User[]> => {
+        return apiFetch('/Users');
+    },
+
+    getUserById: async (id: string): Promise<User> => {
+        return apiFetch(`/Users/${id}`);
+    },
+
+    // --- Stage APIs ---
     getStages: async (): Promise<Stage[]> => {
         return apiFetch('/Stages');
     },
 
-    /**
-     * Gửi yêu cầu GET đến /Stages/{id}
-     */
     getStageById: async (id: string): Promise<Stage> => {
         return apiFetch(`/Stages/${id}`);
     },
 
-    /**
-     * Gửi yêu cầu GET đến /Users (Yêu cầu quyền Admin)
-     */
-    getUsers: async (): Promise<User[]> => {
-        return apiFetch('/Users');
-    },
-      createStage: async (stageData: Omit<Stage, 'id' | 'quizzes' | 'creature'>): Promise<Stage> => {
+    createStage: async (stageData: Omit<Stage, 'id' | 'quizzes' | 'creature'>): Promise<Stage> => {
         return apiFetch('/Stages', {
             method: 'POST',
             body: JSON.stringify(stageData),
@@ -99,7 +91,8 @@ export const apiService = {
         });
     },
 
-       getQuizzesByStageId: async (stageId: string): Promise<Quiz[]> => {
+    // --- Quiz APIs ---
+    getQuizzesByStageId: async (stageId: string): Promise<Quiz[]> => {
         return apiFetch(`/Quizzes/${stageId}`);
     },
 
@@ -122,6 +115,9 @@ export const apiService = {
             method: 'DELETE',
         });
     },
+
+    // --- Badge APIs ---
+    getBadges: async (): Promise<Badge[]> => {
+        return apiFetch('/Badges');
+    },
 };
-
-

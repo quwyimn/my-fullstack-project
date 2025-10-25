@@ -1,14 +1,27 @@
 // src/pages/ProfilePage.tsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import styles from './ProfilePage.module.css';
+import { apiService } from '../services/apiService';
+import type { Badge } from '../types';
 
 const ProfilePage: React.FC = () => {
     const { user } = useAuth();
+    const [allBadges, setAllBadges] = useState<Badge[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    if (!user) {
+    useEffect(() => {
+        apiService.getBadges()
+            .then(setAllBadges)
+            .finally(() => setIsLoading(false));
+    }, []);
+
+    if (!user || isLoading) {
         return <div className={styles.container}>Đang tải thông tin người dùng...</div>;
     }
+
+    // ĐẢM BẢO DÒNG NÀY ĐÚNG CHÍNH TẢ
+    const userBadges = allBadges.filter(badge => user.badgeIds.includes(badge.id));
 
     return (
         <div className={styles.container}>
@@ -26,27 +39,40 @@ const ProfilePage: React.FC = () => {
                         <div className={styles.statItem}>
                             <span>{user.completedStages.length}</span> Màn đã qua
                         </div>
+                        <div className={styles.statItem}>
+                            <span>{userBadges.length}</span> Huy hiệu
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <h2 className={styles.sectionTitle}>Bộ Sưu Tập Huy Hiệu</h2>
+            <div className={styles.grid}>
+                {userBadges.length > 0 ? (
+                    userBadges.map(badge => (
+                        <div key={badge.id} className={styles.itemCard} title={badge.description}>
+                            <i className={badge.icon} style={{ color: '#facc15' }}></i>
+                            <p>{badge.name}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>Bạn chưa thu thập được huy hiệu nào.</p>
+                )}
             </div>
 
             <h2 className={styles.sectionTitle}>ID Các Màn Đã Hoàn Thành</h2>
             <div className={styles.grid}>
                 {user.completedStages.length > 0 ? (
-                    // Chỉ cần lặp qua mảng completedStages có sẵn trong user
                     user.completedStages.map(stageId => (
                         <div key={stageId} className={styles.itemCard}>
-                            <i className={'fas fa-check-circle'}></i>
+                            <i className={'fas fa-check-circle'} style={{ color: '#6ee7b7' }}></i>
                             <p>{stageId}</p>
                         </div>
                     ))
                 ) : (
-                    <p>Bạn chưa hoàn thành màn chơi nào. Hãy bắt đầu cuộc phiêu lưu!</p>
+                    <p>Bạn chưa hoàn thành màn chơi nào.</p>
                 )}
             </div>
-
-            <h2 className={styles.sectionTitle}>Bộ Sưu Tập Huy Hiệu</h2>
-            <p>Tính năng Huy hiệu sẽ sớm được cập nhật!</p>
         </div>
     );
 };

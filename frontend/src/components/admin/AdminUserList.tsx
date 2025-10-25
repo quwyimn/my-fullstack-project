@@ -2,12 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { apiService } from '../../services/apiService';
 import type { User } from '../../types';
-import styles from '../../pages/AdminPage.module.css'; // Tái sử dụng style
+import styles from '../../pages/AdminPage.module.css';
 
 const AdminUserList: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    const navigate = (path: string) => {
+        window.dispatchEvent(new CustomEvent('navigate', { detail: { path } }));
+    };
 
     useEffect(() => {
         apiService.getUsers()
@@ -32,7 +36,13 @@ const AdminUserList: React.FC = () => {
                 </thead>
                 <tbody>
                     {users.map(user => (
-                        <tr key={user.id}>
+                        <tr 
+                            key={user.id}
+                            onClick={() => navigate(`/admin/user/${user.id}`)}
+                            style={{ cursor: 'pointer' }}
+                            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#374151'}
+                            onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}
+                        >
                             <td>{user.username}</td>
                             <td>{user.email}</td>
                             <td>

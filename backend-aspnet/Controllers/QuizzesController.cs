@@ -13,6 +13,7 @@ public class CreateQuizRequest
     public int CorrectAnswerIndex { get; set; }
     public string Explanation { get; set; } = "";
     public string? Difficulty { get; set; }
+    public string? BloomTag { get; set; }
 }
 
 [ApiController]
@@ -43,11 +44,23 @@ public class QuizzesController : ControllerBase
             CorrectAnswerIndex = request.CorrectAnswerIndex,
             Explanation = request.Explanation,
             Difficulty = request.Difficulty ?? "Dễ",
+            BloomTag = request.BloomTag ?? "Nhớ"
         };
 
-        await _dataService.CreateQuizAsync(newQuiz);
+        var newId = await _dataService.CreateQuizAsync(newQuiz);
+        newQuiz.Id = newId;
+
         return CreatedAtAction(nameof(GetByStageId), new { stageId = newQuiz.StageId }, newQuiz);
     }
+
+    // --- THÊM HÀM MỚI NÀY VÀO ---
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateQuiz(string id, [FromBody] Quiz updatedQuiz)
+    {
+        await _dataService.UpdateQuizAsync(id, updatedQuiz);
+        return NoContent(); // Trả về 204 No Content khi cập nhật thành công
+    }
+    // --- KẾT THÚC ---
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteQuiz(string id)

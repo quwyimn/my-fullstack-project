@@ -130,3 +130,4 @@
 /home/quwy/alq/backend-aspnet/bin/Debug/net8.0/runtimes/osx/native/libmongocrypt.dylib
 /home/quwy/alq/backend-aspnet/bin/Debug/net8.0/runtimes/win/native/mongocrypt.dll
 /home/quwy/alq/backend-aspnet/bin/Debug/net8.0/LiteDB.dll
+/home/quwy/alq/backend-aspnet/obj/Debug/net8.0/backend-aspnet.sourcelink.json

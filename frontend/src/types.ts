@@ -1,6 +1,14 @@
 // src/types.ts
 export type UserRole = 'Player' | 'Admin';
 
+// --- THÊM INTERFACE NÀY VÀO ---
+export interface Badge {
+    id: string;
+    name: string;
+    description: string;
+    icon: string;
+}
+
 export interface User {
   id: string;
   username: string;
@@ -8,16 +16,18 @@ export interface User {
   role: UserRole;
   xp: number;
   completedStages: string[];
+  badgeIds: string[];
 }
 
 export interface Quiz {
   id: string;
   question: string;
   options: string[];
-  correctAnswerIndex: number; 
+  correctAnswerIndex: number;
   explanation: string;
-  stageId: string; 
+  stageId: string;
   difficulty: string;
+  bloomTag: string;
 }
 
 export interface Stage {
@@ -32,4 +42,5 @@ export interface Stage {
     icon: string;
   };
   order: number;
+  badgeId?: string; 
 }

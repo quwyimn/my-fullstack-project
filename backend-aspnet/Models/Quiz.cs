@@ -28,4 +28,7 @@ public class Quiz
 
     [BsonElement("difficulty")]
     public string Difficulty { get; set; } = "Dễ";
+
+    [BsonElement("bloomTag")]
+    public string BloomTag { get; set; } = "Nhớ";
 }

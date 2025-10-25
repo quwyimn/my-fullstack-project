@@ -32,4 +32,5 @@ public class User
 
     [BsonElement("completedStages")]
     public List<string> CompletedStages { get; set; } = new List<string>();
+    public List<string> BadgeIds { get; set; } = new List<string>();
 }

@@ -20,6 +20,7 @@ namespace backend_aspnet.Services
             };
         }
 
+        // HÀM NÀY CHỨA TOÀN BỘ 24 CÂU HỎI
         public static List<Quiz> GetAllMockQuizzes()
         {
             return new List<Quiz>

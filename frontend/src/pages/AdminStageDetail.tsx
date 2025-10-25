@@ -20,8 +20,10 @@ const AdminStageDetail: React.FC<AdminStageDetailProps> = ({ stageId }) => {
     const [editingQuiz, setEditingQuiz] = useState<Quiz | null>(null);
     const [formData, setFormData] = useState<QuizFormData>({
         question: '', options: ['', '', '', ''], correctAnswerIndex: 0,
-        explanation: '', stageId: stageId, difficulty: 'Dễ',
+        explanation: '', stageId: stageId, difficulty: 'Dễ', bloomTag: 'Nhớ',
     });
+
+    const bloomTags = ["Nhớ", "Hiểu", "Vận dụng", "Phân tích", "Đánh giá", "Sáng tạo"];
 
     const navigate = (path: string) => {
         window.dispatchEvent(new CustomEvent('navigate', { detail: { path } }));
@@ -50,9 +52,14 @@ const AdminStageDetail: React.FC<AdminStageDetailProps> = ({ stageId }) => {
     const handleOpenModal = (quiz: Quiz | null = null) => {
         setEditingQuiz(quiz);
         if (quiz) {
-            setFormData({ ...quiz, stageId });
+            // Đảm bảo options luôn là mảng 4 phần tử
+            const options = [...quiz.options];
+            while (options.length < 4) {
+                options.push('');
+            }
+            setFormData({ ...quiz, options, stageId });
         } else {
-            setFormData({ question: '', options: ['', '', '', ''], correctAnswerIndex: 0, explanation: '', stageId: stageId, difficulty: 'Dễ' });
+            setFormData({ question: '', options: ['', '', '', ''], correctAnswerIndex: 0, explanation: '', stageId: stageId, difficulty: 'Dễ', bloomTag: 'Nhớ' });
         }
         setIsModalOpen(true);
     };
@@ -63,6 +70,8 @@ const AdminStageDetail: React.FC<AdminStageDetailProps> = ({ stageId }) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: name === 'correctAnswerIndex' ? parseInt(value) : value }));
     };
+
+
 
     const handleOptionChange = (index: number, value: string) => {
         const newOptions = [...formData.options];
@@ -153,6 +162,22 @@ const AdminStageDetail: React.FC<AdminStageDetailProps> = ({ stageId }) => {
                             <div style={formGroupStyle}>
                                 <label>Giải thích</label>
                                 <textarea name="explanation" value={formData.explanation} onChange={handleFormChange} required rows={3} style={inputStyle} />
+                            </div>
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                <div style={{ ...formGroupStyle, flex: 1 }}>
+                                    <label>Độ khó</label>
+                                    <select name="difficulty" value={formData.difficulty} onChange={handleFormChange} style={inputStyle}>
+                                        <option value="Dễ">Dễ</option>
+                                        <option value="Trung bình">Trung bình</option>
+                                        <option value="Khó">Khó</option>
+                                    </select>
+                                </div>
+                                <div style={{ ...formGroupStyle, flex: 1 }}>
+                                    <label>Nhãn Bloom</label>
+                                    <select name="bloomTag" value={formData.bloomTag} onChange={handleFormChange} style={inputStyle}>
+                                        {bloomTags.map(tag => <option key={tag} value={tag}>{tag}</option>)}
+                                    </select>
+                                </div>
                             </div>
                             <div style={{ marginTop: '1rem', textAlign: 'right' }}>
                                 <button type="button" onClick={handleCloseModal}>Hủy</button>
